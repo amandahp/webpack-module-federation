@@ -37,6 +37,13 @@ module.exports={
       filename: 'index.html',
       template: './public/index.html',
       title: 'Contact'
+    }),
+    new ModuleFederationPlugin({
+      name: "ContactApp",
+      filename: "remoteEntry.js",
+      exposes:{
+        './ContactPage': './src/Contact'
+      }
     })
   ]
 

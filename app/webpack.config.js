@@ -1,5 +1,5 @@
 const path = require('path');
-const HtmlWebpackPlugin = require(html-webpack-plugin);
+const HtmlWebpackPlugin = require('html-webpack-plugin');
 const ModuleFederationPlugin = require('webpack/lib/container/ModuleFederationPlugin');
 
 module.exports={
@@ -12,7 +12,7 @@ module.exports={
     contentBase: path.resolve(__dirname, './dist'),
     index: 'index.html',
     port: 9001,
-    historyFallbackApi: true
+    historyApiFallback: true
   },
   resolve: {
     extensions: [".jsx", ".js", ".json"]
@@ -22,7 +22,9 @@ module.exports={
       {
           test: /\.jsx?$/,
           loader: require.resolve("babel-loader"),
-          options: [require.resolve("@babel/preset-react")]
+          options: {
+            presets: [require.resolve("@babel/preset-react")]
+          }
       },
       {
         test: /\.css$/,
